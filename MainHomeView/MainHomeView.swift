@@ -21,6 +21,10 @@ struct MainHomeView : View {
                     ClickableImage(text: "Q3", imageString: "3.square.fill") {self.viewModel.updateQurter(value: "Q3")}
                     ClickableImage(text: "Q4", imageString: "4.square.fill") {self.viewModel.updateQurter(value: "Q4")}
                 }
+                HStack(spacing: 10) {
+                    Text("Quarter").frame(width: 100, alignment: .leading)
+                    Text("Amount Data Sent")
+                }
                 List(viewModel.filterRecords) { item in
                     DataRow(data: item)
                 }.navigationBarTitle(Text("Sample Data" + self.viewModel.getSubTitle()))

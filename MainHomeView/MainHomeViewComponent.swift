@@ -62,6 +62,9 @@ struct DoneButton : View {
 struct DataRow: View {
     var data: DataRecord
     var body: some View {
-        Text("Quarter: \(data.quarter),  Volume: \(data.volumeOfMobileData)")
+        HStack(spacing: 10) {
+            Text("Quarter: \(data.quarter),").frame(width: 160, alignment: .leading)
+            Text("Volume: \(data.volumeOfMobileData)")
+        }
     }
 }
