@@ -55,13 +55,19 @@ class MainHomeVM: ObservableObject {
                 let jsonData = jsonString.data(using: .utf8)!
                 if let object = try? JSONDecoder().decode(Result.self, from: jsonData) {
                     object.records.forEach { (item) in
-                        let newRecord = DataRecord.init(id: UUID(), quarter: item.quarter, volumeOfMobileData: item.volumeOfMobileData)
+                        
                         if let itemYear = item.quarter.split(separator: "-").first {
-                            if !yearList.contains(String(itemYear)) {
-                                yearList.append(String(itemYear))
+                            guard let yearNum = Int(String(itemYear)) else {
+                                return
+                            }
+                            if(yearNum >= 2008 && yearNum <= 2018) {
+                                let newRecord = DataRecord.init(id: UUID(), quarter: item.quarter, volumeOfMobileData: item.volumeOfMobileData)
+                                dataList.append(newRecord)
+                                if !yearList.contains(String(itemYear)) {
+                                    yearList.append(String(itemYear))
+                                }
                             }
                         }
-                        dataList.append(newRecord)
                     }
                     self.records = dataList
                     self.filterRecords = dataList
