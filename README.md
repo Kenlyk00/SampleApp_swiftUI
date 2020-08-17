@@ -1,4 +1,4 @@
-# SampleApp_swiftUI -WIP
+# SampleApp_swiftUI
 > The Sample App is to display the amount the of data sent over Singapore’s mobile networks from 2008 to 2018.
 
 ## Features
